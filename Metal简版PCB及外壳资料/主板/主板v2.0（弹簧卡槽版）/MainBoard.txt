@@ -1,0 +1,12 @@
+Board Information Report
+Filename     : C:\Users\Tony Electricity\Desktop\my_Cubic\Metal简版PCB及外壳资料\主板\主板v2.0（换卡槽版）\MainBoard.PcbDoc
+Date         : 2022/7/24
+Time         : 14:49:35
+Time Elapsed : 00:00:00
+
+Routing Information
+    Routing completion, 100.00%
+    Connections, 97
+    Connections routed, 97
+    Connections remaining, 0
+count : 4

@@ -1,0 +1,96 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc
+Date     : 2022/7/23
+Time     : 0:54:03
+
+WARNING: Design contains shelved or modified (but not repoured) polygons. The result of DRC is not correct. Recommended to restore/repour all polygons and proceed with DRC again
+   Polygon named: GND_L02_P023 In net GND On Bottom4
+   Polygon named: NONET_L01_P028 In net GND On Top1
+
+Processing Rule : Clearance Constraint (Gap=5mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+   Violation between Modified Polygon: Polygon Shelved  (NONET_L01_P028) on Top1 
+   Violation between Modified Polygon: Polygon Shelved  (NONET_L02_P023) on Bottom4 
+Rule Violations :2
+
+Processing Rule : Width Constraint (Min=4mil) (Max=10000mil) (Preferred=10mil) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Direct Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=8mil) (Max=10000mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=2mil) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=0mil) (IsPad),(All)
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=0mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+   Violation between Net Antennae: Via (257mil,255mil) from Top1 to Bottom4 
+   Violation between Net Antennae: Via (257mil,285mil) from Top1 to Bottom4 
+   Violation between Net Antennae: Via (333mil,350mil) from Top1 to Bottom4 
+   Violation between Net Antennae: Via (335mil,395mil) from Top1 to Bottom4 
+   Violation between Net Antennae: Via (424.595mil,563.905mil) from Top1 to Bottom4 
+   Violation between Net Antennae: Via (500mil,309mil) from Top1 to Bottom4 
+   Violation between Net Antennae: Via (540mil,309mil) from Top1 to Bottom4 
+   Violation between Net Antennae: Via (797mil,844mil) from Top1 to Bottom4 
+   Violation between Net Antennae: Via (839mil,828mil) from Top1 to Bottom4 
+   Violation between Net Antennae: Via (881mil,842mil) from Top1 to Bottom4 
+Rule Violations :10
+
+Processing Rule : Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main'))
+   Violation between Room Definition: Between Component V1-ME6211C33 (840mil,836mil) on Top1 And Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT SIP Component 1-LCD-240x240 (694mil,694mil) on Bottom4 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT SIP Component CON1-FFC_0.5_8 (614.5mil,674.5mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C10-22uF (380.5mil,645.5mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C1-1uF (951mil,920mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C2-103 (1003.5mil,920mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C3-103 (1086mil,920mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C4-1uF (338mil,266mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C5-22uF (323mil,550mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C6-22uF (323mil,472mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C7-22uF (267mil,696.5mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C8-22uF (267mil,645.5mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C9-22uF (462mil,508mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component L1-6.8uH (519mil,311mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component Q1-AO3415A (701mil,363mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R10-1K (577mil,426mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R1-100K (226mil,389.5mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R2-40.2K/3 (376.5mil,776.527mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R3-40.2K/3 (376.5mil,796.027mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R4-40.2K/3 (376.5mil,875.527mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R5-13K/2 (247.5mil,991mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R6-13K/2 (247.5mil,911mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R7-40.2K/3 (247.627mil,876.027mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R8-40.2K/3 (247.627mil,796.527mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R9-40.2K/3 (247.627mil,777.027mil) on Top1 
+   Violation between Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SOIC Component U1-MP1471 Ωµ—π–æ∆¨ (335mil,360mil) on Top1 
+Rule Violations :26
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+Processing Rule : Silk primitive without silk layer
+Rule Violations :0
+
+
+Violations Detected : 38
+Waived Violations : 0
+Time Elapsed        : 00:00:00

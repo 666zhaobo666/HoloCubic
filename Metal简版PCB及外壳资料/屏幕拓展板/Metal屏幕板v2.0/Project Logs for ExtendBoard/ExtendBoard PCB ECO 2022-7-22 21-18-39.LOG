@@ -1,0 +1,22 @@
+Change Component Designator: OldDesignator=C2 NewDesignator=C4
+Change Component Designator: OldDesignator=C3 NewDesignator=C5
+Change Component Designator: OldDesignator=C4 NewDesignator=C6
+Change Component Designator: OldDesignator=C5 NewDesignator=C7
+Change Component Designator: OldDesignator=C6 NewDesignator=C8
+Change Component Designator: OldDesignator=C7 NewDesignator=C9
+Change Component Designator: OldDesignator=C8 NewDesignator=C10
+Added Component: Designator=C2(CAP_0603)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C3(CAP_0603)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=3V3 Pin=C2-1
+Added Pin To Net: NetName=GND Pin=C2-2
+Added Pin To Net: NetName=GND Pin=C3-1
+Change Net Name : Old Net Name=NetC2_1 New Net Name=NetC4_1
+Change Net Name : Old Net Name=NetC2_2 New Net Name=NetC4_2
+Added Pin To Net: NetName=NetC3_2 Pin=C3-2
+Added Pin To Net: NetName=NetC3_2 Pin=V1-4
+Added Net: Name=NetC3_2
+Added Member To Class: ClassName=Main Member=Component C9 22uF
+Added Member To Class: ClassName=Main Member=Component C10 22uF
+Added Room: Name=Main

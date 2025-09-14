@@ -1,0 +1,472 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\SOFTWARE\AltiumDesigner18\SharedAD18\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2022/7/23</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">0:54:03</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc" class="file"><acronym title="C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc">C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">2</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">38</td></tr>
+</table>
+</td>
+</table><a name="IDB3IPKTNANHEJMILCUPAQOCPIWHW20V3NLV3GB1EQSLGPJZGWSAXC"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLPC1I5ZIIJQBEQTNA1OQ53JEHJSSZARD5YKWQZPV1WXTAUZC0CDP">Design contains shelved or modified (but not repoured) polygons. The result of DRC is not correct. Recommended to restore/repour all polygons and proceed with DRC again</a></td>
+<td class="column2">2</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">2</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDF51OOEN055MK4TOXM0OY04G4KZZAEUDSGS55GFW0VRBMU50Y0NM">Clearance Constraint (Gap=5mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3J2LYXEPPKVZMDUSMKWLK0DI0LR45ZA42XZGFJKB1KIOG4AZQ3MC">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDNOG2W0AWAYDOCDVJ3UDRJQUYSF2JUKFZHQRDMLJ1EBZ2ZCODDR">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDYZUKKACAC5KFO0OGDTEUXVEI3CE52C2OP5OCGGXSY3LWNMV0DLP">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDOYHJUTAAOWJQEYOYDSR0Y3AZZESPGSYC3DPCMMJFLUXIDXQSV2GB">Width Constraint (Min=4mil) (Max=10000mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUGOOP0XQOUO1KHU35C2G05JFEEMF1XU2OQLUE4M2GWQ4LKGFET5E">Power Plane Connect Rule(Direct Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZIVD4CJD40Z4HOOOUJSJZT5RRISPRHEGXFYUASEDNZ5MS1ZDL0LM">Hole Size Constraint (Min=8mil) (Max=10000mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDDXY3SJ3KYP0LBZXAMNNGW13ZPHWXXZ5RFMPSRIBQBI2XVWWYHAVI">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDHP1M2KW1RVFLNUPS35A00BDODEN4G3QY5MNRDOGA2BIRAO1DO0D">Minimum Solder Mask Sliver (Gap=2mil) (Disabled)(All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDYGUK0VPUCLYAFEPL2MRIKFWE1KZAGSQSFGE022WKCYJCFHNBICJ">Silk To Solder Mask (Clearance=0mil) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4BGGTC4C4UQPFCTH3TOCGCKUQID15GN2PD4QVYLKWSR23CBWMZE">Silk to Silk (Clearance=0mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDR52T1VH1FX23PHLO13JBF3KYSFE0P23TWPVMBXGWZA4EHZQNQO1F">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">10</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDUVD0FDXI1IPAD4CY3ER21I5Y0ABC4GL5SORVZEYX1RGYZVMVKHD">Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main'))</a></td>
+<td class="column2">26</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDXTYF4JYXCFR2IZTLSOHKG54HHCOUT52ZGMATVEPNZXLRS0LMSJN">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDODUYHHFZEH2JTJRDXN5FJQ0ZBKQUV42T0HO1VJZ3I30KY0V0GVB">Silk primitive without silk layer</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">38</td>
+</tr>
+</table><br><a name="IDUHIHPK1JKEQTFKXA5A4PM0GVJHTJECUDOS3VVENMKTF1WZLYDJM"><h2>Warnings</h2></a><a name="IDLPC1I5ZIIJQBEQTNA1OQ53JEHJSSZARD5YKWQZPV1WXTAUZC0CDP"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="warning">Design contains shelved or modified (but not repoured) polygons. The result of DRC is not correct. Recommended to restore/repour all polygons and proceed with DRC again</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: GND_L02_P023 In net GND On Bottom4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: NONET_L01_P028 In net GND On Top1</td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDYZUKKACAC5KFO0OGDTEUXVEI3CE52C2OP5OCGGXSY3LWNMV0DLP"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Modified Polygon (Allow modified: No), (Allow shelved: No)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7115.373mil|Location2.X=8237.873mil|Location1.Y=4199.881mil|Location2.Y=5200.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7115.373mil|Location2.X=8237.873mil|Location1.Y=4199.881mil|Location2.Y=5200.381mil|Absolute=True">Modified Polygon: Polygon Shelved  (NONET_L01_P028) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6917.873mil|Location2.X=8349.873mil|Location1.Y=4097.881mil|Location2.Y=5288.881mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6917.873mil|Location2.X=8349.873mil|Location1.Y=4097.881mil|Location2.Y=5288.881mil|Absolute=True">Modified Polygon: Polygon Shelved  (NONET_L02_P023) on Bottom4 </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDR52T1VH1FX23PHLO13JBF3KYSFE0P23TWPVMBXGWZA4EHZQNQO1F"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=0mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7181.373mil|Location2.X=7222.377mil|Location1.Y=4261.381mil|Location2.Y=4324.506mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7181.373mil|Location2.X=7222.377mil|Location1.Y=4261.381mil|Location2.Y=4324.506mil|Absolute=True">Net Antennae: Via (257mil,255mil) from Top1 to Bottom4 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7181.373mil|Location2.X=7222.377mil|Location1.Y=4291.381mil|Location2.Y=4354.506mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7181.373mil|Location2.X=7222.377mil|Location1.Y=4291.381mil|Location2.Y=4354.506mil|Absolute=True">Net Antennae: Via (257mil,285mil) from Top1 to Bottom4 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7257.373mil|Location2.X=7298.377mil|Location1.Y=4356.381mil|Location2.Y=4419.506mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7257.373mil|Location2.X=7298.377mil|Location1.Y=4356.381mil|Location2.Y=4419.506mil|Absolute=True">Net Antennae: Via (333mil,350mil) from Top1 to Bottom4 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7259.373mil|Location2.X=7300.377mil|Location1.Y=4401.381mil|Location2.Y=4464.506mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7259.373mil|Location2.X=7300.377mil|Location1.Y=4401.381mil|Location2.Y=4464.506mil|Absolute=True">Net Antennae: Via (335mil,395mil) from Top1 to Bottom4 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7348.968mil|Location2.X=7389.972mil|Location1.Y=4570.286mil|Location2.Y=4633.41mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7348.968mil|Location2.X=7389.972mil|Location1.Y=4570.286mil|Location2.Y=4633.41mil|Absolute=True">Net Antennae: Via (424.595mil,563.905mil) from Top1 to Bottom4 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7424.373mil|Location2.X=7465.377mil|Location1.Y=4315.381mil|Location2.Y=4378.506mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7424.373mil|Location2.X=7465.377mil|Location1.Y=4315.381mil|Location2.Y=4378.506mil|Absolute=True">Net Antennae: Via (500mil,309mil) from Top1 to Bottom4 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7464.373mil|Location2.X=7505.377mil|Location1.Y=4315.381mil|Location2.Y=4378.506mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7464.373mil|Location2.X=7505.377mil|Location1.Y=4315.381mil|Location2.Y=4378.506mil|Absolute=True">Net Antennae: Via (540mil,309mil) from Top1 to Bottom4 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7721.373mil|Location2.X=7762.377mil|Location1.Y=4850.381mil|Location2.Y=4913.506mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7721.373mil|Location2.X=7762.377mil|Location1.Y=4850.381mil|Location2.Y=4913.506mil|Absolute=True">Net Antennae: Via (797mil,844mil) from Top1 to Bottom4 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7763.373mil|Location2.X=7804.377mil|Location1.Y=4834.381mil|Location2.Y=4897.506mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7763.373mil|Location2.X=7804.377mil|Location1.Y=4834.381mil|Location2.Y=4897.506mil|Absolute=True">Net Antennae: Via (839mil,828mil) from Top1 to Bottom4 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7805.373mil|Location2.X=7846.377mil|Location1.Y=4848.381mil|Location2.Y=4911.506mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7805.373mil|Location2.X=7846.377mil|Location1.Y=4848.381mil|Location2.Y=4911.506mil|Absolute=True">Net Antennae: Via (881mil,842mil) from Top1 to Bottom4 </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDUVD0FDXI1IPAD4CY3ER21I5Y0ABC4GL5SORVZEYX1RGYZVMVKHD"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main'))</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7848.873mil|Location1.Y=0mil|Location2.Y=4940.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7848.873mil|Location1.Y=0mil|Location2.Y=4940.849mil|Absolute=True">Room Definition: Between Component V1-ME6211C33 (840mil,836mil) on Top1 And Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=8200.344mil|Location1.Y=0mil|Location2.Y=5221.185mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=8200.344mil|Location1.Y=0mil|Location2.Y=5221.185mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT SIP Component 1-LCD-240x240 (694mil,694mil) on Bottom4 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7686.373mil|Location1.Y=0mil|Location2.Y=4933.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7686.373mil|Location1.Y=0mil|Location2.Y=4933.381mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT SIP Component CON1-FFC_0.5_8 (614.5mil,674.5mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7370.586mil|Location1.Y=0mil|Location2.Y=4677.003mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7370.586mil|Location1.Y=0mil|Location2.Y=4677.003mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C10-22uF (380.5mil,645.5mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7930.495mil|Location1.Y=0mil|Location2.Y=4992.093mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7930.495mil|Location1.Y=0mil|Location2.Y=4992.093mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C1-1uF (951mil,920mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7982.995mil|Location1.Y=0mil|Location2.Y=4992.093mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7982.995mil|Location1.Y=0mil|Location2.Y=4992.093mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C2-103 (1003.5mil,920mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=8035.495mil|Location1.Y=0mil|Location2.Y=4992.093mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=8035.495mil|Location1.Y=0mil|Location2.Y=4992.093mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C3-103 (1086mil,920mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7328.086mil|Location1.Y=0mil|Location2.Y=4297.503mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7328.086mil|Location1.Y=0mil|Location2.Y=4297.503mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C4-1uF (338mil,266mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7331.873mil|Location1.Y=0mil|Location2.Y=4610.881mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7331.873mil|Location1.Y=0mil|Location2.Y=4610.881mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C5-22uF (323mil,550mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7331.873mil|Location1.Y=0mil|Location2.Y=4532.881mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7331.873mil|Location1.Y=0mil|Location2.Y=4532.881mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C6-22uF (323mil,472mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7257.086mil|Location1.Y=0mil|Location2.Y=4728.003mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7257.086mil|Location1.Y=0mil|Location2.Y=4728.003mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C7-22uF (267mil,696.5mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7257.086mil|Location1.Y=0mil|Location2.Y=4677.003mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7257.086mil|Location1.Y=0mil|Location2.Y=4677.003mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C8-22uF (267mil,645.5mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7470.873mil|Location1.Y=0mil|Location2.Y=4568.881mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7470.873mil|Location1.Y=0mil|Location2.Y=4568.881mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component C9-22uF (462mil,508mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7543.873mil|Location1.Y=0mil|Location2.Y=4427.881mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7543.873mil|Location1.Y=0mil|Location2.Y=4427.881mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component L1-6.8uH (519mil,311mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7714.708mil|Location1.Y=0mil|Location2.Y=4467.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7714.708mil|Location1.Y=0mil|Location2.Y=4467.849mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component Q1-AO3415A (701mil,363mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7567.086mil|Location1.Y=0mil|Location2.Y=4487.503mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7567.086mil|Location1.Y=0mil|Location2.Y=4487.503mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R10-1K (577mil,426mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7175.495mil|Location1.Y=0mil|Location2.Y=4461.593mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7175.495mil|Location1.Y=0mil|Location2.Y=4461.593mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R1-100K (226mil,389.5mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7366.586mil|Location1.Y=0mil|Location2.Y=4808.03mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7366.586mil|Location1.Y=0mil|Location2.Y=4808.03mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R2-40.2K/3 (376.5mil,776.527mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7366.586mil|Location1.Y=0mil|Location2.Y=4857.53mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7366.586mil|Location1.Y=0mil|Location2.Y=4857.53mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R3-40.2K/3 (376.5mil,796.027mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7366.586mil|Location1.Y=0mil|Location2.Y=4907.03mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7366.586mil|Location1.Y=0mil|Location2.Y=4907.03mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R4-40.2K/3 (376.5mil,875.527mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7237.586mil|Location1.Y=0mil|Location2.Y=5022.503mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7237.586mil|Location1.Y=0mil|Location2.Y=5022.503mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R5-13K/2 (247.5mil,991mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7237.586mil|Location1.Y=0mil|Location2.Y=4972.503mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7237.586mil|Location1.Y=0mil|Location2.Y=4972.503mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R6-13K/2 (247.5mil,911mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7237.713mil|Location1.Y=0mil|Location2.Y=4907.53mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7237.713mil|Location1.Y=0mil|Location2.Y=4907.53mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R7-40.2K/3 (247.627mil,876.027mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7237.713mil|Location1.Y=0mil|Location2.Y=4858.03mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7237.713mil|Location1.Y=0mil|Location2.Y=4858.03mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R8-40.2K/3 (247.627mil,796.527mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7237.713mil|Location1.Y=0mil|Location2.Y=4808.53mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7237.713mil|Location1.Y=0mil|Location2.Y=4808.53mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SMT Small Component R9-40.2K/3 (247.627mil,777.027mil) on Top1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\Metal%E7%AE%80%E7%89%88PCB%E5%8F%8A%E5%A4%96%E5%A3%B3%E8%B5%84%E6%96%99\%E5%B1%8F%E5%B9%95%E6%8B%93%E5%B1%95%E6%9D%BF\Metal%E5%B1%8F%E5%B9%95%E6%9D%BFv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7357.842mil|Location1.Y=0mil|Location2.Y=4449.81mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Tony Electricity\Desktop\my_Cubic\MetalºÚ∞ÊPCBº∞Õ‚ø«◊ ¡œ\∆¡ƒªÕÿ’π∞Â\Metal∆¡ƒª∞Âv2.0\ExtendBoard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=7357.842mil|Location1.Y=0mil|Location2.Y=4449.81mil|Absolute=True">Room Definition: Between Room Main (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (InComponentClass('Main')) And SOIC Component U1-MP1471 Ωµ—π–æ∆¨ (335mil,360mil) on Top1 </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
